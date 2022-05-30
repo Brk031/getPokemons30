@@ -2,8 +2,8 @@ let getBtn = document.querySelector('#getPokemon');
 getBtn.addEventListener('click', fetchPokemon);
 
 
-function fetchPokemon(){
-      fetch('https://pokeapi.co/api/v2/pokemon?limit=30')
+async function fetchPokemon(){
+      await fetch('https://pokeapi.co/api/v2/pokemon?limit=30')
       .then(response => response.json())
       .then(function(allpokemon){
             allpokemon.results.forEach(function(pokemon){
@@ -12,9 +12,9 @@ function fetchPokemon(){
       })
 }
 
-function fetchPokemonData(pokemon){
+async function fetchPokemonData(pokemon){
       let url = pokemon.url;
-      fetch(url)
+      await fetch(url)
       .then(response => response.json())
       .then(function(pokeData){
             renderPokemon(pokeData);
